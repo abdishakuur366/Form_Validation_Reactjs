@@ -1,0 +1,43 @@
+/* .wrapper{
+    background-color: teal;
+} */
+button {
+    width: 150px;
+    height: 60px;
+    border: 3px solid #8707ff;
+    border-radius: 45px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: white;
+    font-size: 1.2em;
+    font-weight: 550;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: -50px;
+  }
+  
+  button:hover {
+    background: #8707ff;
+    color: white;
+    font-size: 1.5em;
+  }
+
+  /* ul{
+    display: flex;
+  }
+  ul li{
+    margin-right: 80px;
+  } */
+
+.r{
+    background-color: rgb(161, 158, 0);
+    color: white;
+    width: fit-content;
+    margin-left: 44%;
+    padding: 13px;
+    border-radius: 25px;
+}
+
+.no{
+    margin-left: 70px;
+    color: #8707ff;
+}
