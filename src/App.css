@@ -2,5 +2,38 @@
 .App {
   text-align: center;
 }
+nav{
+  height: 30px;
+ align-items: end;
+  margin-bottom: 10px;
+  
+}
+
+ul{
+  list-style-type: none;
+  
+}
+
+li{
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.links{
+  color: white;
+ 
+}
+.links:hover{
+  font-size: 30px;
+  color: yellow;
+  
+}
+
+
+
+
+
+
 
 

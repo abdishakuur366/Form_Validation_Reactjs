@@ -1,26 +1,52 @@
 import React, { useState } from 'react';
-import './Form.css'
+import './Form.css';
+import { Router, BrowserRouter, Route, Link } from 'react-router-dom';
 
 function Form() {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
   const [imageInput, setImageInput] = useState('');
   const [error, setError] = useState('');
   const [formDataList, setFormDataList] = useState([]);
 
+  // const handleNameChange = (event) => {
+  //   setName(event.target.value);
+  // };
+
   const handleNameChange = (event) => {
-    setName(event.target.value);
+    const value = event.target.value;
+    if (!/^[a-zA-Z ]*$/.test(value)) {
+      setError('Enter Text Only.');
+    } else {
+      setName(value);
+      setError('');
+    }
   };
 
   const handleAgeChange = (event) => {
     setAge(event.target.value);
   };
 
+  // const handleAgeChange = (event) => {
+  //   const value = Number(event.target.value);
+  //   if ((value) || value > 18) {
+  //     setError('Age should be a number greater than or equal to 18.');
+  //   } else {
+  //     setAge(value);
+  //     setError('');
+  //   }
+  // };
+
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handleImageChange = (event) => {
@@ -42,15 +68,17 @@ function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!name || !age || !address || !image) {
+    
+    if (!name || !age || !email || !image) {
       setError('Please fill in all fields and upload an image.');
+      
       return;
     }
 
     const formData = {
       name,
       age,
-      address,
+      email,
       image: imagePreview
     };
 
@@ -59,7 +87,7 @@ function Form() {
     // Clear form data for next user registration
     setName('');
     setAge('');
-    setAddress('');
+    setEmail('');
     setImage(null);
     setImagePreview('');
     setImageInput('');
@@ -67,14 +95,38 @@ function Form() {
   };
 
   return (
-    <div className='wrapper'>
+    <div className='wrapper' style={{
+      width:'45%',
+      height:'634px',
+      marginLeft:'400px',
+      backgroundColor:'#E6EE9C',
+      boxShadow:'0px 0px 5px 0px red',
+      borderRadius:'40px',
+      padding:'5px'
+
       
-      <form onSubmit={handleSubmit}>
+      }}>
+        {/* <nav>
+          <a href="/"></a>
+        </nav> */}
+
+      
+      <form onSubmit={handleSubmit} style={{
+        backgroundColor:'whiteSmoke',
+        padding:'10px',
+        borderRadius:'40px',
+        boxShadow:'0px 0px 5px 0px',
+        width:'96%',
+        height:'350px'
+
+    
+    }}>
         <label
         style={{
             fontSize:'30px',
             fontWeight:'bold',
-            marginRight:'10px'
+            marginRight:'10px',
+            
         }}
         >
           Name:
@@ -123,20 +175,21 @@ function Form() {
             marginRight:'10px'
         }}
         >
-          Address:
+          Email:  
           <input 
           style={{
             marginLeft:'16px',
-            marginRight:'37px',
+            marginRight:'5px',
             marginTop:'20px',
             color: '#8707ff',
             border: '2px solid #8707ff',
             borderradius: '10px',
             padding: '10px 25px',
             background: 'transparent',
-            maxwidth: '190px'
+            maxwidth: '190px',
+            
          }}
-          type="text" value={address} onChange={handleAddressChange} placeholder='Enter Your Address' />
+          type="Email" value={email} onChange={handleEmailChange} placeholder='Enter Your Address' />
         </label>
         <br />
         <label
@@ -153,9 +206,13 @@ function Form() {
           style={{
             maxwidth: '300px',
             margin: '0 auto',
-            padding: '20px',
-            backgroundcolor:'#13121269',
-            borderradius: '5px'
+            marginLeft:'150px',
+            padding: '10px',
+            color:'white',
+            fontWeight:'bold',
+            border:'1px dashed white',
+            backgroundColor:'blue',
+            
           }}
            type="file" onChange={handleImageChange} value={imageInput} />
         </label>
@@ -166,17 +223,25 @@ function Form() {
         type="submit">Register</button>
       </form>
 
-      <h2 className='r'>Registered Users:</h2>
+      {/* <h2 className='r'>Registered Users:</h2> */}
+      <hr />
       {formDataList.length > 0 ? (
         <ul style={{listStyleType:'none',        
         }}>
           {formDataList.map((formData, index) => (
-            <li  key={index}>
+            <li  key={index} style={{
+              border:'1px solid red',
+              backgroundColor:'gold',
+              padding:'2px',
+              borderRadius:'10px',
+              boxShadow:'0px 0px 5px 0px',
+              
+            }}>
               <img
-              src={formData.image} alt={formData.name} style={{width: "100px", height: "100px", borderRadius:'50%', border:'5px solid skyblue' }} />
-              <p>Name: {formData.name}</p>
-              <p>Age:{formData.age}</p>
-              <p>Address: {formData.address}</p>
+              src={formData.image} alt={formData.name} style={{width: "100px", height: "100px", borderRadius:'50%', border:'2px dashed red' }} />
+              <hr /><h5>Name: {formData.name}</h5>
+              <h5>Age:{formData.age}</h5>
+              <h5>Email: {formData.email}</h5>
             </li>
           ))}
           
