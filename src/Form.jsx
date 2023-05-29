@@ -231,7 +231,7 @@ function Form() {
           {formDataList.map((formData, index) => (
             <li  key={index} style={{
               border:'1px solid red',
-              backgroundColor:'gold',
+              backgroundColor:'transparent',
               padding:'2px',
               borderRadius:'10px',
               boxShadow:'0px 0px 5px 0px',
