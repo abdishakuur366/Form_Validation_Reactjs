@@ -23,15 +23,23 @@ button {
   }
 
   ul{
+    /* display: grid;
+    grid-template-columns: repeat(3,3fr);
+    grid-auto-flow: column; */
     display: flex;
+    flex-wrap: wrap;
   }
   ul li{
+    
+    /* flex: 2; */
     margin-right: 60px;
-    width: 50%;
+    width: 35%;
     height: 230px;
     line-height: 5px;
     color: black;
     font-size: 16px;
+    margin-left: 10px;
+    margin-top: 10px;
 
   }
 

@@ -28,7 +28,12 @@ function Form() {
   };
 
   const handleAgeChange = (event) => {
-    setAge(event.target.value);
+    // let num=[0,1,2,3,4,5,6,7,8,9]
+    {
+      setAge(event.target.value);
+    
+    }
+    
   };
 
   // const handleAgeChange = (event) => {
@@ -94,10 +99,20 @@ function Form() {
     setError('');
   };
 
+  function clear(){
+    setName('');
+    setAge('');
+    setEmail('');
+    setImage(null);
+    setImagePreview('');
+    setImageInput('');
+    setError('');
+  }
+
   return (
     <div className='wrapper' style={{
-      width:'45%',
-      height:'634px',
+      width:'50%',
+      height:'fit',
       marginLeft:'400px',
       backgroundColor:'#E6EE9C',
       boxShadow:'0px 0px 5px 0px red',
@@ -164,7 +179,7 @@ function Form() {
             background: 'transparent',
             maxwidth: '190px'
          }}
-          type="number" value={age} onChange={handleAgeChange} placeholder='Enter your Age'/>
+          type='tel' value={age} onChange={handleAgeChange} placeholder='Enter your Age'/>
         </label>
         <br />
         <label
@@ -189,7 +204,7 @@ function Form() {
             maxwidth: '190px',
             
          }}
-          type="Email" value={email} onChange={handleEmailChange} placeholder='Enter Your Address' />
+          type='email' value={email} onChange={handleEmailChange} placeholder='Enter Your Address' />
         </label>
         <br />
         <label
@@ -204,14 +219,15 @@ function Form() {
           Upload Image:
           <input 
           style={{
-            maxwidth: '300px',
+            width: '200px',
             margin: '0 auto',
-            marginLeft:'150px',
+            marginLeft:'70px',
             padding: '10px',
             color:'white',
             fontWeight:'bold',
             border:'1px dashed white',
             backgroundColor:'blue',
+            borderRadius:'30px'
             
           }}
            type="file" onChange={handleImageChange} value={imageInput} />
@@ -221,15 +237,17 @@ function Form() {
         <br />
         <button 
         type="submit">Register</button>
+        <button onClick={()=>setFormDataList('')}>Clear</button>
       </form>
 
       {/* <h2 className='r'>Registered Users:</h2> */}
       <hr />
       {formDataList.length > 0 ? (
-        <ul style={{listStyleType:'none',        
+        <ul  style={{listStyleType:'none',        
         }}>
           {formDataList.map((formData, index) => (
-            <li  key={index} style={{
+            <li  key={index}  style={{
+          
               border:'1px solid red',
               backgroundColor:'transparent',
               padding:'2px',
