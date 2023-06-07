@@ -112,7 +112,8 @@ function Form() {
   return (
     <div className='wrapper' style={{
       width:'50%',
-      height:'fit',
+      minHeight:'800px',
+      // height:'fit',
       marginLeft:'400px',
       backgroundColor:'#E6EE9C',
       boxShadow:'0px 0px 5px 0px red',
@@ -131,8 +132,8 @@ function Form() {
         padding:'10px',
         borderRadius:'40px',
         boxShadow:'0px 0px 5px 0px',
-        width:'96%',
-        height:'350px'
+        width:'100%',
+        height:'500px'
 
     
     }}>
@@ -164,7 +165,8 @@ function Form() {
         style={{
             fontSize:'30px',
             fontWeight:'bold',
-            marginRight:'10px'
+            marginRight:'10px',
+            color:'black'
         }}
         >
           Age:
@@ -179,7 +181,7 @@ function Form() {
             background: 'transparent',
             maxwidth: '190px'
          }}
-          type='tel' value={age} onChange={handleAgeChange} placeholder='Enter your Age'/>
+          type='number' value={age} onChange={handleAgeChange} placeholder='Enter your Age'/>
         </label>
         <br />
         <label
@@ -207,10 +209,11 @@ function Form() {
           type='email' value={email} onChange={handleEmailChange} placeholder='Enter Your Address' />
         </label>
         <br />
+        
         <label
         style={{
             
-            fontSize:'30px',
+            fontSize:'20px',
             fontWeight:'bold',
             marginRight:'70px',
             marginTop:'60px'
@@ -219,19 +222,22 @@ function Form() {
           Upload Image:
           <input 
           style={{
-            width: '200px',
+            width: '350px',
             margin: '0 auto',
             marginLeft:'70px',
-            padding: '10px',
+            padding: '5px',
             color:'white',
             fontWeight:'bold',
             border:'1px dashed white',
-            backgroundColor:'blue',
-            borderRadius:'30px'
+            backgroundColor:'#8707ff',
+            borderRadius:'30px',
+            fontSize:'15px',
+            marginTop:'10px'
             
           }}
-           type="file" onChange={handleImageChange} value={imageInput} />
-        </label>
+           type="file" onChange={handleImageChange} value={imageInput}  />
+        </label >
+       
         <br />
         {error && <div style={{ color: 'red' }}>{error}</div>}
         <br />
@@ -248,18 +254,19 @@ function Form() {
           {formDataList.map((formData, index) => (
             <li  key={index}  style={{
           
-              border:'1px solid red',
+              // border:'1px solid red',
               backgroundColor:'transparent',
               padding:'2px',
               borderRadius:'10px',
               boxShadow:'0px 0px 5px 0px',
               
+              
             }}>
               <img
-              src={formData.image} alt={formData.name} style={{width: "100px", height: "100px", borderRadius:'50%', border:'2px dashed red' }} />
-              <hr /><h5>Name: {formData.name}</h5>
-              <h5>Age:{formData.age}</h5>
-              <h5>Email: {formData.email}</h5>
+              src={formData.image} alt={formData.name} style={{width: "100px", height: "100px", borderRadius:'50%', border:'2px dashed red', marginLeft:'70px' }} />
+              <hr /><h5 style={{marginTop:'16px'}}>Name: {formData.name}</h5>
+              <h5 style={{marginTop:'28px'}}>Age:{formData.age}</h5>
+              <h5 style={{marginTop:'25px',width:'100%'}}>Email: {formData.email}</h5>
             </li>
           ))}
           
